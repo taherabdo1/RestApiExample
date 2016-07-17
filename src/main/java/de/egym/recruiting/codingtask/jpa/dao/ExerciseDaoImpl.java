@@ -89,10 +89,6 @@ public class ExerciseDaoImpl extends AbstractBaseDao<Exercise> implements
 
 		exercise.setUser(user);
 		exercise = create(exercise);
-		// user.getExercises().add(exercise);
-		// exercises.add(exercise);
-		// user.setExercises(exercises);
-		// userDao.update(user);
 		return exercise;
 	}
 

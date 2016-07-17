@@ -109,6 +109,4 @@ public class Exercise extends AbstractEntity {
 			this.user = user;
 		}
 
-
-
 }
