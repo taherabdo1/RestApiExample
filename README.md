@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # eGym Recruiting Coding Task
 
 **Do not share this project or its solution with people outside of eGym GmbH!**
@@ -135,3 +136,7 @@ Then zip the project, but before that make sure to remove all binary/compiled da
 
 Send your solution as zip file using the [this online form](https://script.google.com/a/macros/egym.de/s/AKfycbwVMmgwNOQ_iq1Vk3z-FyJU_eQdx8QvzVUx9wbaFEXFNxi0uYnc/exec).
 In order to avoid any misunderstandings, please fill out the same email and name you used in your application.
+=======
+# RestApiExample
+this project is a prototype of using Rest Api with another technologies like (gradle building tool, swagger, Json, embided Database"h2sql", hibernate as ORM, JUnit, mokito, Rest RestAssured"for rest Test" and others), my role in this project was to handle some business and be able to consume thus funcitonality as wab services.
+>>>>>>> 903e8304dee94f344982e1db4359cd49b3ad2b00
