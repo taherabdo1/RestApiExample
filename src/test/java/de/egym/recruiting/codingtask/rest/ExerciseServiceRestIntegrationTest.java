@@ -1,6 +1,5 @@
 package de.egym.recruiting.codingtask.rest;
 
-//import static com.jayway.restassured.RestAssured.when;
 import static com.jayway.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.hasItems;
 

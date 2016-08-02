@@ -2,7 +2,6 @@ package de.egym.recruiting.codingtask.jpa.domain;
 
 import io.swagger.annotations.ApiModelProperty;
 
-import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Cacheable;
@@ -14,8 +13,6 @@ import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Cacheable(value = false)
 @Entity

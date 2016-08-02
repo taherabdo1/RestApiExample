@@ -1,6 +1,8 @@
 package exceptions;
 
-public class ExerciseConfilctException extends Exception {
+import java.io.IOException;
+
+public class ExerciseConfilctException extends IOException {
 
     /**
 	 * 

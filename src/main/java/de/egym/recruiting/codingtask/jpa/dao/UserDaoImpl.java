@@ -48,6 +48,7 @@ public class UserDaoImpl extends AbstractBaseDao<User> implements UserDao {
 	}
 	
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> getUsersByLastName(String lastName) {
 		if (StringUtils.isEmpty(lastName)) {

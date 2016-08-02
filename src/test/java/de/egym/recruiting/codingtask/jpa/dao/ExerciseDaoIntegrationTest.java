@@ -47,7 +47,7 @@ public class ExerciseDaoIntegrationTest extends AbstractIntegrationTest {
 		exercise.setDuration(30 * 60);
 		exercise.setExcerciseType(Exercise.Type.ROWING);
 		exercise.setUser(user);
-		exercise.setStart(DateUtils.parseDate("2016-07-15:15:30:00",
+		exercise.setStart(DateUtils.parseDate("1999-07-11:02:30:00",
 				"yyyy-MM-dd:hh:mm:ss"));
 		try {
 			exerciseDao.insertExercise(exercise);
@@ -71,7 +71,7 @@ public class ExerciseDaoIntegrationTest extends AbstractIntegrationTest {
 		exercise.setDuration(30 * 60);
 		exercise.setExcerciseType(Exercise.Type.ROWING);
 		exercise.setUser(user);
-		exercise.setStart(DateUtils.parseDate("2016-07-15:15:30:00",
+		exercise.setStart(DateUtils.parseDate("2016-07-17:15:30:00",
 				"yyyy-MM-dd:hh:mm:ss"));
 		try {
 			exerciseDao.insertExercise(exercise);
@@ -96,7 +96,7 @@ public class ExerciseDaoIntegrationTest extends AbstractIntegrationTest {
 		exercise.setDuration(30 * 60);
 		exercise.setExcerciseType(Exercise.Type.ROWING);
 		exercise.setUser(user);
-		exercise.setStart(DateUtils.parseDate("2016-07-15:15:30:00",
+		exercise.setStart(DateUtils.parseDate("2016-07-18:15:30:00",
 				"yyyy-MM-dd:hh:mm:ss"));
 		try {
 			exerciseDao.insertExercise(exercise);
@@ -120,7 +120,7 @@ public class ExerciseDaoIntegrationTest extends AbstractIntegrationTest {
 		exercise.setDuration(30 * 60);
 		exercise.setExcerciseType(Exercise.Type.ROWING);
 		exercise.setUser(user);
-		exercise.setStart(DateUtils.parseDate("2016-07-15:15:30:00",
+		exercise.setStart(DateUtils.parseDate("2016-07-19:15:30:00",
 				"yyyy-MM-dd:hh:mm:ss"));
 		try {
 			exerciseDao.insertExercise(exercise);
@@ -155,7 +155,7 @@ public class ExerciseDaoIntegrationTest extends AbstractIntegrationTest {
 		}
 		final Collection<Exercise> dateFiltteredExercises = exerciseDao
 				.getAllExercisesFilteredByDate(user, DateUtils.parseDate(
-						"2016-07-15:15:30:00", "yyyy-MM-dd:hh:mm:ss"));
+						"2016-07-15:21:30:00", "yyyy-MM-dd:hh:mm:ss"));
 		Assert.assertTrue(!dateFiltteredExercises.contains(exercise));
 	}
 
@@ -171,7 +171,7 @@ public class ExerciseDaoIntegrationTest extends AbstractIntegrationTest {
 		exercise.setExcerciseType(Exercise.Type.SPORTS);
 		exercise.setUser(user);
 		try {
-			exercise.setStart(DateUtils.parseDate("2016-07-14:15:30:00",
+			exercise.setStart(DateUtils.parseDate("2014-07-01:20:30:00",
 					"yyyy-MM-dd:hh:mm:ss"));
 			exerciseDao.insertExercise(exercise);
 		} catch (ExerciseConfilctException e) {

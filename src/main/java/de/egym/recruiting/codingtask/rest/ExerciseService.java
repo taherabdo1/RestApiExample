@@ -1,6 +1,5 @@
 package de.egym.recruiting.codingtask.rest;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Nonnull;
@@ -18,7 +17,6 @@ import javax.ws.rs.core.Response;
 import com.google.inject.persist.Transactional;
 
 import de.egym.recruiting.codingtask.jpa.domain.Exercise;
-import de.egym.recruiting.codingtask.jpa.domain.User;
 import io.swagger.annotations.Api;
 
 @Transactional

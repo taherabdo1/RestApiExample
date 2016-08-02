@@ -2,7 +2,6 @@ package de.egym.recruiting.codingtask.jpa.dao;
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Assert;
@@ -11,7 +10,6 @@ import org.junit.Test;
 import com.google.inject.Inject;
 
 import de.egym.recruiting.codingtask.AbstractIntegrationTest;
-import de.egym.recruiting.codingtask.jpa.domain.Exercise;
 import de.egym.recruiting.codingtask.jpa.domain.User;
 
 public class UserDaoIntegrationTest extends AbstractIntegrationTest {

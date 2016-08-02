@@ -65,62 +65,61 @@ just follow [this guide](https://www.jetbrains.com/help/idea/2016.1/importing-pr
 1. Search for users by last name:
     * Extend the existing API of the `UserService` to expose the new functionality via a new HTTP query parameter
       `lastName`, which will filter the users, by their last name.
-        * (Optional) implement a prefix matching, thus if `lastName=bon` then we should get the user `Bond` as well.
-        * (Optional) write a DAO integration test, service mocked test and a service REST integration test.
+        * (Optional) implement a prefix matching, thus if `lastName=bon` then we should get the user `Bond` as well.//done
+        * (Optional) write a DAO integration test, service mocked test and a service REST integration test.			//done but I didn't need for mocked test
 
 2. Insert new users into the system via the API
-    * Implement an appropriate extension of the `UserService` with suitable REST endpoint
-    * Persist new data
+    * Implement an appropriate extension of the `UserService` with suitable REST endpoint							//done
+    * Persist new data																								//done
     * Validate the input data:
-        * all user fields should be mandatory
-        * Use an appropriate HTTP status code if the input is invalid.
-        * (Optional) Return HTTP status code `Conflict` if the user email already exists.
-        * (Optional) Check if the provided email has a valid syntax by using a simple regular expression.
-    * (Optional) write a DAO integration test, service mocked test and a service REST integration test.
+        * all user fields should be mandatory																		//done
+        * Use an appropriate HTTP status code if the input is invalid.												//done
+        * (Optional) Return HTTP status code `Conflict` if the user email already exists.							//done
+        * (Optional) Check if the provided email has a valid syntax by using a simple regular expression.			//done
+    * (Optional) write a DAO integration test, service mocked test and a service REST integration test.				//partially
 
 3. Implement a new JPA domain class `Exercise` and that represents an exercise done by the user.
-    * An object of this class should hold all necessary relational information about a exercise and:
-        * type (`RUNNING`, `CYCLING`, `SWIMMING`, `ROWING`, `WALKING`, `CIRCUIT_TRAINING`, `STRENGTH_TRAINING`,
+    * An object of this class should hold all necessary relational information about a exercise and:				//done
+        * type (`RUNNING`, `CYCLING`, `SWIMMING`, `ROWING`, `WALKING`, `CIRCUIT_TRAINING`, `STRENGTH_TRAINING`,		
           `FITNESS_COURSE`, `SPORTS`, `OTHER`)
         * start timestamp
         * duration in seconds
         * calories burned
         * distance in meters (optional attribute).
-    * Don't forget to annotate your class with `@Entity` and to update the `persistence.xml` file.
-    * Implement a new DAO to access entities of this `Exercise` class
+    * Don't forget to annotate your class with `@Entity` and to update the `persistence.xml` file.					//done
+    * Implement a new DAO to access entities of this `Exercise` class												//done
     * Build a REST service to implement the following business logic:
-        * list all existing exercises for a given user id.
-            * add the ability to filter them by type.
-            * add the ability to filter them by date.			///come back for this
-        * get one specific exercise by providing the user and exercise id
+        * list all existing exercises for a given user id.															//done
+            * add the ability to filter them by type.																//done
+            * add the ability to filter them by date.																//done
+        * get one specific exercise by providing the user and exercise id											//done
         * create a new exercise by giving the user reference, which should exist in the system, and the necessary
-          exercise data.
-        * create some test exercises in the `TestData` class.
-        * (Optional) Validate the input. If a user is not preset in the Database respond with HTTP status code
+          exercise data.																							//done
+        * create some test exercises in the `TestData` class.														//added one exercise to user 3
+        * (Optional) Validate the input. If a user is not preset in the Database respond with HTTP status code		//done
           `Not Found`, if some exercise attributes are missing return HTTP status code `Bad Request` and an appropriate
           error message.
-		  ///////////////////////////////////////come back here
-        * (Optional) More validation:
+        * (Optional) More validation:																				//done partially, some problem for the date format, will be handled
           during exercise creation there should be checked that there is no other exercise already present,
           in the period where the new exercise will take place. If this is the case return an HTTP
           status code `Conflict` with appropriate error message.
-		  ///////////////////////////////////////
-    * (Optional) write a DAO integration test, service mocked test and a service REST integration test.
+
+    * (Optional) write a DAO integration test, service mocked test and a service REST integration test.				//partially
 
 4. Implement a points and ranking system based on the user's exercises
     * Calculate the points a user receives for an exercise.
-      A user gets one point per minute of the duration of the exercise plus the burnt calories.
-    * Provide a REST endpoint to retrieve the accumulated points of a user for the last 4 weeks.
-    * (Optional) Implement a caching mechanism for the calculated points on the server side.
+      A user gets one point per minute of the duration of the exercise plus the burnt calories.						//done
+    * Provide a REST endpoint to retrieve the accumulated points of a user for the last 4 weeks.					//done
+    * (Optional) Implement a caching mechanism for the calculated points on the server side.						
       The cache should be valid for 5 minutes.
-    * (Optional) write appropriate tests.
+    * (Optional) write appropriate tests.																			//partially
 
 5. Implement user achievements:
     * If a user has trained at least 4 days in one week (i.e. from Monday until Sunday)
-      for at least 30 minutes a day, he receives the achievement `TRAINING_ADDICT`.
+      for at least 30 minutes a day, he receives the achievement `TRAINING_ADDICT`.									//done
     * The user's achievements should be retrievable via a REST call.
     * (Optional) Implement an achievement of your choice.
-    * (Optional) write appropriate tests.
+    * (Optional) write appropriate tests.																			//partially
 
 ## How to Submit Your Solution
 

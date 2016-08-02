@@ -10,15 +10,12 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
-import org.hibernate.engine.internal.Cascade;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import io.swagger.annotations.ApiModelProperty;
 
-@Cacheable(value=false)
+@Cacheable(value = false)
 @Entity
 public class User extends AbstractEntity {
 
@@ -32,13 +29,13 @@ public class User extends AbstractEntity {
 	private String email;
 
 	@ApiModelProperty(required = true, value = "Date in ISO format, i.e., yyyy-MM-dd.", example = "1987-06-15")
-	@JsonFormat(pattern="yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date birthday;
 
 	@JsonManagedReference
-	@OneToMany(fetch = FetchType.LAZY,mappedBy="user" , cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
 	private Collection<Exercise> exercises;
-	
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -78,6 +75,5 @@ public class User extends AbstractEntity {
 	public void setExercises(Collection<Exercise> exercises) {
 		this.exercises = exercises;
 	}
-	
-	
+
 }

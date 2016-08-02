@@ -3,9 +3,7 @@ package de.egym.recruiting.codingtask.rest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -13,7 +11,6 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import org.apache.commons.lang3.StringUtils;
-import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -128,7 +125,7 @@ public class ExerciseServiceImpl implements ExerciseService {
 
 		// if the properties are not well supported
 		if (id < 0 || StringUtils.isEmpty(startDate)) {
-			return new ArrayList();
+			return new ArrayList<Exercise>();
 		}
 
 		User user = new User();

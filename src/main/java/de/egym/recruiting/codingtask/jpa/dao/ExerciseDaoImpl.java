@@ -1,31 +1,33 @@
 package de.egym.recruiting.codingtask.jpa.dao;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
 
-import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.inject.Provider;
 import com.google.inject.persist.Transactional;
 
 import de.egym.recruiting.codingtask.jpa.domain.Exercise;
 import de.egym.recruiting.codingtask.jpa.domain.User;
+import de.egym.recruiting.codingtask.rest.UserServiceImpl;
 import exceptions.ExerciseConfilctException;
 
 @Transactional
 public class ExerciseDaoImpl extends AbstractBaseDao<Exercise> implements
 		ExerciseDao {
+
+	private static final Logger log = LoggerFactory
+			.getLogger(UserServiceImpl.class);
 
 	UserDao userDao;
 
@@ -43,6 +45,7 @@ public class ExerciseDaoImpl extends AbstractBaseDao<Exercise> implements
 		this.userDao = userDao;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Collection<Exercise> getAllExercises(User user) {
 
@@ -61,28 +64,44 @@ public class ExerciseDaoImpl extends AbstractBaseDao<Exercise> implements
 	}
 
 	@Override
-	public Exercise insertExercise(Exercise exercise) throws ExerciseConfilctException {
+	public Exercise insertExercise(Exercise exercise)
+			throws ExerciseConfilctException {
 		User user = userDao.findById(exercise.getUser().getId());
+
 		// check if there is other exercises intersects with the supposed new
 		// one
-		Calendar cal = Calendar.getInstance();
-		Collection<Exercise> exercisesTemp = getAllExercises(user);
-		for (Exercise exTemp : exercisesTemp) {
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
-			Date endTime = new Date();
-			try {
-				endTime = sdf.parse(exTemp.getStart().toString());
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-			cal.setTime(endTime);
-			cal.add(Calendar.SECOND, (int) exTemp.getDuration());
-			endTime = cal.getTime();
-			if (exTemp.getStart().compareTo(exercise.getStart()) >= 0
-					&& endTime.compareTo(exercise.getStart()) < 0) {
-				throw new ExerciseConfilctException();
-			}
-		}
+
+		
+		// Calendar cal = Calendar.getInstance();
+		// Collection<Exercise> exercisesTemp = getAllExercises(user);
+		// for (Exercise exTemp : exercisesTemp) {
+		// SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
+		// Date endTime = new Date();
+		// try {
+		// endTime = sdf.parse(exTemp.getStart().toString());
+		//
+		// cal.setTime(endTime);
+		// cal.add(Calendar.SECOND, (int) exTemp.getDuration());
+		// // //
+		// endTime = sdf.parse(cal.getTime().toString());
+		// exercise.setStart(sdf.parse(exercise.getStart().toString()));
+		// // /
+		// log.debug("start from database is : " + exTemp.getStart());
+		// log.debug("endTime is : " + sdf.parse(cal.getTime().toString()));
+		// log.debug("new Exercise start date  is : " + exercise.getStart());
+		//
+		// } catch (ParseException e) {
+		// e.printStackTrace();
+		// }
+
+		// check the interval
+		// if ((exTemp.getStart().before(exercise.getStart()) || exTemp
+		// .getStart().equals(exercise.getStart()))
+		// && (endTime.after(exercise.getStart()) || endTime
+		// .equals(exercise.getStart()))) {
+		// throw new ExerciseConfilctException();
+		// }
+		// }
 		// if the user is not found in the database
 		if (user == null)
 			return null;
@@ -92,6 +111,7 @@ public class ExerciseDaoImpl extends AbstractBaseDao<Exercise> implements
 		return exercise;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Collection<Exercise> getAllExercisesFilteredByType(User user,
 			Exercise.Type type) {
@@ -110,6 +130,7 @@ public class ExerciseDaoImpl extends AbstractBaseDao<Exercise> implements
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Collection<Exercise> getAllExercisesFilteredByDate(User user,
 			Date startDate) {
